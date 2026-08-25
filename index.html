@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,9 @@
       --text-muted: #7a6f68;
       --accent-latte: #d0b8a8;
       --accent-dark: #8d7b68;
-      --accent-hover: #c8b6a6;   
-      --tag-bg: #eae3d9;     
-      --border-color: #e3dad0;   
+      --accent-hover: #c8b6a6;
+      --tag-bg: #eae3d9;
+      --border-color: #e3dad0;
     }
 
     * {
@@ -31,7 +32,7 @@
       line-height: 1.7;
       padding: 40px 20px;
       /* 背景漸層柔光 */
-      background-image: 
+      background-image:
         radial-gradient(at 15% 15%, rgba(208, 184, 168, 0.25) 0px, transparent 40%),
         radial-gradient(at 85% 85%, rgba(141, 123, 104, 0.15) 0px, transparent 40%);
       background-attachment: fixed;
@@ -293,10 +294,11 @@
     }
   </style>
 </head>
+
 <body>
 
   <div class="container">
-    
+
     <!-- 個人 Header 資訊 -->
     <header>
       <div class="profile-header">
@@ -313,9 +315,9 @@
     <!-- 技能/學習軌跡區塊 -->
     <section class="skills-section">
       <h2 class="section-title">學習軌跡與技術應用 (Tech Stack & Learning Focus)</h2>
-      
+
       <div class="skills-grid">
-        
+
         <!-- 前端開發 -->
         <div class="skill-card">
           <h3 class="skill-title">前端開發</h3>
@@ -365,42 +367,44 @@
   </div>
 
   <script>
-  // 透過靜態 JSON 資料模擬 API 傳輸 (無須 PHP 後端即可在 GitHub Pages 上呈現前後端串接)
-  const mockProjects = [
-    {
-      title: "品牌飾品小店 設計",
-      description: "為飾品品牌設計的展示型網站，包含商品卡片佈局、收藏互動按鈕與動態導覽介面實作。",
-      tags: ["HTML/CSS", "UI Design", "RWD Layout", "AI Collaboration"],
-      link: "https://lina88091500.github.io/HW-Jewelry-store/"
-    },
-    {
-      title: "Chiikawa 究極探索工作台",
-      description: "整合抽籤互動、每日靈感卡片與搜尋功能之主題式儀表板，著重於組件模組化與 UI/UX 互動設計。",
-      tags: ["JavaScript", "CSS Grid", "UI/UX Design", "LocalStorage"],
-      link: "https://lina88091500.github.io/work-2/"
-    },
-    {
-      title: "動態線上行事曆與排程系統",
-      description: "採用純演算計算月曆日數與星期陣列，具備動態任務切換、即時狀態更新與溫暖配色之介面。",
-      tags: ["HTML5", "CSS Layout", "Algorithm", "RWD"],
-      link: "https://github.com"
-    },
-    {
-      title: "全端文章管理與會員權限系統",
-      description: "完整實作會員註冊/登入驗證、最新文章 CRUD 管理、問卷投票與即時瀏覽人次統計等後端邏輯。",
-      tags: ["PHP", "MySQL", "Session", "AJAX"],
-      link: "https://github.com"
-    }
-  ];
+    // 透過靜態 JSON 資料模擬 API 傳輸 (無須 PHP 後端即可在 GitHub Pages 上呈現前後端串接)
+    const mockProjects = [
+      {
+        title: "品牌飾品小店 設計",
+        description: "為飾品品牌設計的展示型網站，包含商品卡片佈局、收藏互動按鈕與動態導覽介面實作。",
+        tags: ["HTML/CSS", "UI Design", "RWD Layout", "AI Collaboration"],
+        link: "https://lina88091500.github.io/HW-Jewelry-store/"
+      },
+      {
 
-  function renderProjects(projects) {
-    const container = document.getElementById('projects-container');
-    container.innerHTML = '';
+        title: "貓咪領養小平台",
+        description: "結合領養資訊瀏覽、互動抽籤卡片與每日靈感推薦的主題式儀表板。運用元件化開發思維建構 UI/UX，並整合 LocalStorage 實現資料持久化儲存與個人化收藏體驗。",
+        tags: ["JavaScript", "CSS Grid", "UI/UX Design", "LocalStorage", "DOM Optimization"],
+        link: "https://lina88091500.github.io/work-2/"
 
-    projects.forEach(project => {
-      const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
-      
-      const cardHTML = `
+      },
+      {
+        title: "動態線上行事曆與排程系統",
+        description: "採用純演算計算月曆日數與星期陣列，具備動態任務切換、即時狀態更新與溫暖配色之介面。",
+        tags: ["HTML5", "CSS Layout", "Algorithm", "RWD"],
+        link: "https://github.com"
+      },
+      {
+        title: "J-BEAUTY 日系美妝美學全端管理系統",
+        description: "採用原生 PHP 與 MySQL 打造之主題式 CMS 平台。重構傳統題型為日系美學風格（J-BEAUTY STUDIO），整合 Session 會員登入驗證、動態選單下拉選單、Hero 輪播圖管理、最新消息 CRUD 與動態貴賓瀏覽人次統計。",
+        tags: ["PHP", "MySQL", "UI/UX Redesign", "Session", "AJAX", "CRUD"],
+        link: "http://220.128.133.15/s1150101/Portfolio/php/11501-BQUIZ01/index.php"
+      }
+    ];
+
+    function renderProjects(projects) {
+      const container = document.getElementById('projects-container');
+      container.innerHTML = '';
+
+      projects.forEach(project => {
+        const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+        const cardHTML = `
         <article class="project-card">
           <div>
             <h3 class="card-title">${project.title}</h3>
@@ -410,16 +414,17 @@
           <a href="${project.link}" target="_blank" class="btn">瀏覽作品網站 ↗</a>
         </article>
       `;
-      container.innerHTML += cardHTML;
-    });
-  }
+        container.innerHTML += cardHTML;
+      });
+    }
 
-  // 模擬非同步資料 Fetch (非同步 API 連接)
-  document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      renderProjects(mockProjects);
-    }, 400);
-  });
-</script>
+    // 模擬非同步資料 Fetch (非同步 API 連接)
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        renderProjects(mockProjects);
+      }, 400);
+    });
+  </script>
 </body>
+
 </html>
