@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lina | Full-Stack Developer Portfolio</title>
+  <style>
+    /* 全局變數：溫暖米咖 / 燕麥色調 (Warm Oatmeal & Latte Palette) */
+    :root {
+      --bg-color: #f7f4ef;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --text-main: #3d352e;
+      --text-muted: #7a6f68;
+      --accent-latte: #d0b8a8;
+      --accent-dark: #8d7b68;
+      --accent-hover: #c8b6a6;   
+      --tag-bg: #eae3d9;     
+      --border-color: #e3dad0;   
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+      /* 背景漸層柔光 */
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(208, 184, 168, 0.25) 0px, transparent 40%),
+        radial-gradient(at 85% 85%, rgba(141, 123, 104, 0.15) 0px, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 頂部 Header & 個人簡介區 */
+    header {
+      margin-bottom: 40px;
+      padding: 30px;
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(141, 123, 104, 0.06);
+    }
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .profile-info h1 {
+      font-size: 2.2rem;
+      color: var(--accent-dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+
+    .profile-info p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      word-break: break-word;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      text-decoration: none;
+      color: var(--accent-dark);
+      background: var(--tag-bg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+      background: var(--accent-dark);
+      color: #fff;
+    }
+
+    /* 區塊標題 */
+    .section-title {
+      font-size: 1.4rem;
+      color: var(--accent-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      word-break: break-word;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 20px;
+      background-color: var(--accent-dark);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    /* 技能樹 (Skills) */
+    .skills-section {
+      margin-bottom: 50px;
+    }
+
+    .skills-grid {
+      display: grid;
+      /* 將原本的 200px 改為 min(100%, 200px) 防止極小螢幕跑版 */
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      color: var(--accent-dark);
+      margin-bottom: 10px;
+    }
+
+    .skill-list {
+      list-style: none;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .skill-list li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      word-break: break-word;
+    }
+
+    .skill-list li::before {
+      content: '•';
+      color: var(--accent-latte);
+      flex-shrink: 0;
+    }
+
+    /* 作品專案區 (Projects) */
+    .projects-grid {
+      display: grid;
+      /* 將原本的 280px 改為 min(100%, 260px) 防止窄螢幕破版 */
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 24px rgba(104, 90, 75, 0.05);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(141, 123, 104, 0.15);
+      border-color: var(--accent-latte);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      color: var(--accent-dark);
+      margin-bottom: 8px;
+      word-break: break-word;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      word-break: break-word;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 12px;
+      color: var(--text-main);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      background-color: var(--accent-latte);
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-dark);
+      color: #fff;
+    }
+
+    /* 頁尾 */
+    footer {
+      text-align: center;
+      padding-top: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border-color);
+      word-break: break-word;
+    }
+
+    /* 動態載入 */
+    .loading {
+      text-align: center;
+      grid-column: 1 / -1;
+      color: var(--text-muted);
+      padding: 40px 0;
+    }
+
+    /* RWD 響應式微調 (手機與平板適應) */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      header {
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+
+      .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile-info h1 {
+        font-size: 1.8rem;
+      }
+
+      .profile-info p {
+        font-size: 0.9rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+      }
+
+      .project-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- 個人 Header 資訊 -->
+    <header>
+      <div class="profile-header">
+        <div class="profile-info">
+          <h1>林宣芝</h1>
+          <p>全端網頁開發學習者 | 結構化頁面建構與前後端邏輯實作</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com" target="_blank" class="social-btn">GitHub ↗</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 技能/學習軌跡區塊 -->
+    <section class="skills-section">
+      <h2 class="section-title">學習軌跡與技術應用 (Tech Stack & Learning Focus)</h2>
+      
+      <div class="skills-grid">
+        
+        <!-- 前端開發 -->
+        <div class="skill-card">
+          <h3 class="skill-title">前端開發</h3>
+          <ul class="skill-list">
+            <li>HTML5 / CSS3 (Grid & Flexbox 排版實作)</li>
+            <li>JavaScript 基礎語法與 DOM 操作</li>
+            <li>RWD 響應式網頁佈局</li>
+          </ul>
+        </div>
+
+        <!-- 後端技術 & 資料庫 -->
+        <div class="skill-card">
+          <h3 class="skill-title">後端技術 & 資料庫</h3>
+          <ul class="skill-list">
+            <li>PHP 基礎語法與後端邏輯實作</li>
+            <li>MySQL 資料庫基礎查詢與 CRUD 操作</li>
+            <li>Web API 基礎概念與資料串接</li>
+          </ul>
+        </div>
+
+        <!-- 開發工具與協作 -->
+        <div class="skill-card">
+          <h3 class="skill-title">開發工具與協作</h3>
+          <ul class="skill-list">
+            <li>Git / GitHub 版本控制與 Pages 部署</li>
+            <li>VS Code 開發環境配置與 AI 輔助開發</li>
+            <li>XAMPP 本地伺服器環境架設與測試</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 主題作品 (Projects Section) -->
+    <main>
+      <h2 class="section-title">精選專案 (Featured Projects)</h2>
+      <div class="projects-grid" id="projects-container">
+        <p class="loading">資料與專案即時同步中...</p>
+      </div>
+    </main>
+
+    <!-- 頁尾 Footer -->
+    <footer>
+      <p>© 2026 Lina. Built with HTML, CSS, JavaScript & Deployed via GitHub Pages.</p>
+    </footer>
+
+  </div>
+
+  <script>
+  // 透過靜態 JSON 資料模擬 API 傳輸 (無須 PHP 後端即可在 GitHub Pages 上呈現前後端串接)
+  const mockProjects = [
+    {
+      title: "品牌飾品小店 設計",
+      description: "為飾品品牌設計的展示型網站，包含商品卡片佈局、收藏互動按鈕與動態導覽介面實作。",
+      tags: ["HTML/CSS", "UI Design", "RWD Layout", "AI Collaboration"],
+      link: "https://lina88091500.github.io/HW-Jewelry-store/"
+    },
+    {
+      title: "Chiikawa 究極探索工作台",
+      description: "整合抽籤互動、每日靈感卡片與搜尋功能之主題式儀表板，著重於組件模組化與 UI/UX 互動設計。",
+      tags: ["JavaScript", "CSS Grid", "UI/UX Design", "LocalStorage"],
+      link: "https://lina88091500.github.io/work-2/"
+    },
+    {
+      title: "動態線上行事曆與排程系統",
+      description: "採用純演算計算月曆日數與星期陣列，具備動態任務切換、即時狀態更新與溫暖配色之介面。",
+      tags: ["HTML5", "CSS Layout", "Algorithm", "RWD"],
+      link: "https://github.com"
+    },
+    {
+      title: "全端文章管理與會員權限系統",
+      description: "完整實作會員註冊/登入驗證、最新文章 CRUD 管理、問卷投票與即時瀏覽人次統計等後端邏輯。",
+      tags: ["PHP", "MySQL", "Session", "AJAX"],
+      link: "https://github.com"
+    }
+  ];
+
+  function renderProjects(projects) {
+    const container = document.getElementById('projects-container');
+    container.innerHTML = '';
+
+    projects.forEach(project => {
+      const tagsHTML = project.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+      
+      const cardHTML = `
+        <article class="project-card">
+          <div>
+            <h3 class="card-title">${project.title}</h3>
+            <p class="card-desc">${project.description}</p>
+            <div class="tags">${tagsHTML}</div>
+          </div>
+          <a href="${project.link}" target="_blank" class="btn">瀏覽作品網站 ↗</a>
+        </article>
+      `;
+      container.innerHTML += cardHTML;
+    });
+  }
+
+  // 模擬非同步資料 Fetch (非同步 API 連接)
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      renderProjects(mockProjects);
+    }, 400);
+  });
+</script>
+</body>
+</html>
